@@ -8,7 +8,7 @@ namespace AnhTesterHRM_xUnit.Tests
     public class LoginTest : BaseTest , IDisposable
     {
         LoginPage loginPage = new LoginPage();
-        static ExcelReader excelReader = new ExcelReader("C:/Thanh Lam Tran/CsharpExcelReader.xlsx", "Sheet1");
+        static ExcelReader excelReader = new ExcelReader("Resources/CsharpExcelReader.xlsx", "Sheet1");
 
 
         [Theory]
@@ -21,7 +21,6 @@ namespace AnhTesterHRM_xUnit.Tests
             Assert.Equal("https://hrm.anhtester.com/erp/desk", loginPage.Login(userName, passWord));
         }
 
-  
         [Fact , Trait("Category", "LogutBasic")]
         public void LogoutTest()
         {
@@ -29,11 +28,10 @@ namespace AnhTesterHRM_xUnit.Tests
             Assert.NotEqual("Cant not logout this page", loginPage.Logout());
         }
 
-
         [Fact , Trait("Category","Login")]
         public void LoginTestExcelFile()
         {
-            Assert.Equal("https://hrm.anhtester.com/erp/desk", loginPage.Login(excelReader.GetCellData(1), excelReader.GetCellData(2)));
+            Assert.Equal("https://hrm.anhtester.com/", loginPage.Login(excelReader.GetCellData(1), excelReader.GetCellData(2)));
         }
     }
 }

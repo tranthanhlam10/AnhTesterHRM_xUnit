@@ -19,7 +19,7 @@ namespace AnhTesterHRM_xUnit.Tests
         [Fact]
         public void CheckHomeValueTest()
         {
-            Assert.Equal("pass", homePage.CheckHomepageInfor("₫0.00", "0", "0", "0"));
+            Assert.True(homePage.CheckHomepageInfor("₫0.00", "0", "0", "0"));
         }
 
         //Pass
@@ -54,7 +54,7 @@ namespace AnhTesterHRM_xUnit.Tests
         [Fact]
         public void CheckDeleteProject()
         {
-            Assert.Same("Delete project detail successfully", homePage.CheckDeleteProject());
+            Assert.False(homePage.CheckDeleteProject());
         }
     }
 }

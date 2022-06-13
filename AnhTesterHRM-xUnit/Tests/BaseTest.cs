@@ -1,8 +1,7 @@
 ﻿using AnhTesterHRM_xUnit.Bases;
 using AnhTesterHRM_xUnit.Utils;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading;
+using System;   
 
 namespace AnhTesterHRM_xUnit.Tests
 {
@@ -11,15 +10,19 @@ namespace AnhTesterHRM_xUnit.Tests
         BasePage basePage = new BasePage();
         ConfigSetting config = new ConfigSetting();
 
+        public string ReadJson()
+        {
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.AddJsonFile("Utils/ConfigEnv.json");
+            IConfigurationRoot configuration = builder.Build();
+            configuration.Bind(config);
+            return config.env;
+        }
 
         public BaseTest()
         {
-            ConfigurationBuilder builder = new ConfigurationBuilder();
-            builder.AddJsonFile("C:/Specflow/AnhTesterHRM-xUnit/AnhTesterHRM-xUnit/Utils/ConfigEnv.json");
-            IConfigurationRoot configuration = builder.Build();
-            configuration.Bind(config);
-            Thread.Sleep(1000);
-            basePage.SetupBrowser(config.env); // change env and env2 to switch browser. .
+           
+            basePage.SetupBrowser(ReadJson());
         }
 
         public void Dispose()

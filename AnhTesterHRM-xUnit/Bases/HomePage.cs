@@ -42,20 +42,19 @@ namespace AnhTesterHRM_xUnit.Bases
         By btnDeletePj2 = By.CssSelector("#xin_table > tbody > tr:nth-child(2) > td.sorting_1 > div > span:nth-child(2) > button");
 
 
-        public string CheckHomepageInfor(string cost, string day, string prize, string asset)
+        public bool CheckHomepageInfor(string cost, string day, string prize, string asset)
         {
             try
-            {
-                Thread.Sleep(100);
+            {              
                 if (driver.FindElement(txtCostRequest).Text == cost && driver.FindElement(txtDayOff).Text == day && driver.FindElement(txtPrizes).Text == prize && driver.FindElement(txtTotalAsset).Text == asset)
                 {
-                    return "pass";
+                    return true;
                 }
-                else return "fail";
+                else return false;
             }
             catch (NoSuchElementException)
             {
-                return "pass";
+                return true;
             }
         }
 
@@ -83,10 +82,8 @@ namespace AnhTesterHRM_xUnit.Bases
             try
             {
                 driver.FindElement(homeRequestLB2).Click();
-                Thread.Sleep(200);
                 if (driver.FindElement(dbTakeRequest2).Displayed) // wrong locator ??
                 {
-                    Thread.Sleep(200);
                     driver.FindElement(dbTakeRequest2).Click();
 
                     return "https://hrm.anhtester.com/erp/leave-list";
@@ -106,9 +103,7 @@ namespace AnhTesterHRM_xUnit.Bases
         public string CheckDropDownMenu()
         {
             driver.FindElement(featureDM).Click();
-            Thread.Sleep(20);
             driver.FindElement(eventDM).Click();
-            Thread.Sleep(10);
 
             return "https://hrm.anhtester.com/erp/events-list";
         }
@@ -118,7 +113,6 @@ namespace AnhTesterHRM_xUnit.Bases
             try
             {
                 driver.Navigate().GoToUrl("https://hrm.anhtester.com/erp/projects-list");
-                Thread.Sleep(200);
                 driver.FindElement(elementOnTable).Click();
                 if (driver.FindElement(btnDetailPjE).Displayed)
                 {
@@ -136,25 +130,24 @@ namespace AnhTesterHRM_xUnit.Bases
             }
         }
 
-        public string CheckDeleteProject()
+        public bool CheckDeleteProject()
         {
             try
             {
                 driver.Navigate().GoToUrl("https://hrm.anhtester.com/erp/projects-list");
-                Thread.Sleep(2000);
                 driver.FindElement(elenment30nTable).Click();
                 if (driver.FindElement(btnDeletePj2).Displayed)
                 {
                     driver.FindElement(btnDeletePj2).Click();
-                    return "Delete project detail successfully";
+                    return true;
                 }
                 else
-                    return "Delete project detail unsucessfully";
+                    return false;
 
             }
             catch (InvalidSelectorException)
             {
-                return "Exception project detail successfully";
+                return true;
             }
         }
     }

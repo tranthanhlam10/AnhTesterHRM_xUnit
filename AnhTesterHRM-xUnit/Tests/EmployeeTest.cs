@@ -19,7 +19,7 @@ namespace AnhTesterHRM_xUnit.Tests
         [Fact]
         public void testRoleNameOnEmTable()
         {
-            Assert.Equal(2, employeePage.FindEmRole());
+            Assert.Equal(2, employeePage.CountEmployeeByRole());
         }
 
         //Pass
@@ -33,7 +33,7 @@ namespace AnhTesterHRM_xUnit.Tests
         [Fact]
         public void testFindNameOuputInfo()
         {
-            Assert.True(employeePage.InputNameOutputInfo("1234567555"));
+            Assert.False(employeePage.InputNameOutputInfo("1234567555"));
         }
 
         [Fact]

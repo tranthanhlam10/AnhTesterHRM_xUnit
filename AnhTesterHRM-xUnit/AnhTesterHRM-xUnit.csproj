@@ -31,4 +31,13 @@
     <PackageReference Include="XunitXml.TestLogger" Version="3.0.70" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\CsharpExcelReader.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Utils\ConfigEnv.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

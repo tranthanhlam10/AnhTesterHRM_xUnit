@@ -1,6 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System.Threading;
-
 
 namespace AnhTesterHRM_xUnit.Bases
 {
@@ -20,8 +18,7 @@ namespace AnhTesterHRM_xUnit.Bases
             driver.FindElement(txtUserName).SendKeys(userName);
             driver.FindElement(txtPassWord).SendKeys(passWord);
             driver.FindElement(btnLogin).Click();
-
-            Thread.Sleep(5000);
+      
             // this url need timeout to load new url
             return driver.Url;
         }
@@ -31,8 +28,7 @@ namespace AnhTesterHRM_xUnit.Bases
             ;
             if (driver.FindElement(btnLogout).Displayed)
             {
-                driver.FindElement(btnLogout).Click();
-                Thread.Sleep(2000);
+                driver.FindElement(btnLogout).Click(); 
                 return driver.Url;
             }
             else
